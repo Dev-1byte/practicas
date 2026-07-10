@@ -9,11 +9,11 @@
 
   /* COLORS */
 
-  --color-fondo-header: #707a8a;
-  --color-fondo-main-secction: #4d5466;
-  --color-fondo-footer: #252A2E;
+  --color-fondo-header: #112344;
+  --color-fondo-main-secction: #0f1e3c;
+  --color-fondo-footer: #09172c;
   --color-texto: #ffff;
-  --color-texto-green: #15ba83;
+  --color-texto-green: #d3b34b;
   
   --color-gradient1 : rgba(56, 63, 66, 0.8);
   --color-gradient2 : rgb(39, 47, 51);
@@ -138,8 +138,9 @@ nav a:hover{
 
 }
 /* seccion inicio */
+
 .inicio{
-    background: linear-gradient(to top, rgba(56, 63, 66, 0.8), rgb(39, 47, 51)),
+    background: linear-gradient(to top,  rgba(14, 21, 34, 0.8), rgb(6, 12, 24)),
               url("../img/fondo.jpg") center / cover no-repeat;
   background-attachment: scroll; 
   height: 100vh;
@@ -202,7 +203,7 @@ nav a:hover{
 
 
 .social .Descargar{
-    background-color:var(--color-texto-green);
+    background-color:#2870ed;
     border: none;
     padding: 10px 22px;
     border-radius: 5px;
@@ -513,7 +514,7 @@ position: relative;
      left: 50%;
      transform: translate(-50%, -50%);
     
-     background-color: rgb(51, 59, 80);
+     background-color: rgb(12, 19, 34);
      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.6);
      padding:12px;
 
