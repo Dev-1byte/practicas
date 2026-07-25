@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofía Marín — Desarrolladora Full-Stack</title>
+<style>
+  :root{
+    --bg: #14181F;
+    --panel: #1B212C;
+    --panel-2: #202836;
+    --gutter: #10141A;
+    --text: #E8E6E1;
+    --muted: #8A93A6;
+    --accent: #E0A458;
+    --accent-2: #5FA8A0;
+    --line: #2A3242;
+    --mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+  a{color:var(--accent-2); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+  /* Editor tab bar */
+  .tabbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:stretch;
+    background:var(--gutter);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+  }
+  .tabbar .dots{
+    display:flex; align-items:center; gap:6px;
+    padding:0 14px; flex-shrink:0;
+  }
+  .dots span{width:10px; height:10px; border-radius:50%; background:var(--line);}
+  .dots span:nth-child(1){background:#E0785A;}
+  .dots span:nth-child(2){background:#E0C158;}
+  .dots span:nth-child(3){background:#6FBF8F;}
+  .tab{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    color:var(--muted);
+    background:transparent;
+    border:none;
+    border-right:1px solid var(--line);
+    padding:14px 20px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background .15s, color .15s;
+  }
+  .tab:hover{color:var(--text); background:var(--panel);}
+  .tab.active{color:var(--accent); background:var(--panel); border-top:2px solid var(--accent);}
+
+  /* Editor body: line-number gutter + content */
+  .editor{ display:flex; }
+  .gutter{
+    width:52px;
+    background:var(--gutter);
+    color:#3A4355;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    text-align:right;
+    padding:40px 10px 40px 0;
+    user-select:none;
+    flex-shrink:0;
+    line-height:2.15;
+  }
+  .content{flex:1; min-width:0;}
+
+  section{padding:60px 40px 60px 32px; border-bottom:1px solid var(--line);}
+  .section-label{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--accent-2);
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .section-label::before{content:"// ";}
+
+  h1,h2,h3{font-family:var(--mono); font-weight:600; letter-spacing:-0.01em;}
+
+  /* Hero */
+  .hero h1{
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    color:var(--text);
+    line-height:1.15;
+  }
+  .hero h1 .kw{color:var(--accent);}
+  .hero h1 .str{color:var(--accent-2);}
+  .hero .tagline{
+    margin-top:18px; max-width:560px;
+    color:var(--muted); font-size:1.05rem;
+  }
+  .hero .cta-row{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:0.85rem;
+    padding:12px 22px; border-radius:4px;
+    border:1px solid var(--line);
+    color:var(--text); background:var(--panel);
+    transition:border-color .15s, color .15s;
+  }
+  .btn:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+  .btn.primary{background:var(--accent); color:#14181F; border-color:var(--accent); font-weight:600;}
+  .btn.primary:hover{background:#EDB877;}
+
+  /* Skills */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr));
+    gap:14px; margin-top:24px;
+  }
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:16px 18px;
+  }
+  .skill-card .cat{font-family:var(--mono); font-size:0.72rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em;}
+  .skill-card ul{list-style:none; margin-top:10px; font-size:0.92rem; color:var(--text);}
+  .skill-card li{padding:3px 0; color:var(--muted);}
+  .skill-card li::before{content:"› "; color:var(--accent-2);}
+
+  /* Projects */
+  .proj-list{display:flex; flex-direction:column; gap:0; margin-top:28px;}
+  .proj{
+    display:grid; grid-template-columns:1fr 2fr; gap:28px;
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  .proj:first-child{border-top:none;}
+  .proj-meta{font-family:var(--mono);}
+  .proj-meta .name{font-size:1.15rem; color:var(--text);}
+  .proj-meta .stack{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{
+    font-size:0.72rem; padding:3px 8px; border-radius:3px;
+    background:var(--panel-2); color:var(--accent-2); border:1px solid var(--line);
+  }
+  .proj-desc p{color:var(--muted); margin-bottom:10px;}
+  .proj-desc .links a{margin-right:16px; font-family:var(--mono); font-size:0.85rem;}
+
+  /* About */
+  .about-body{max-width:680px; margin-top:20px; color:var(--muted);}
+  .about-body p{margin-bottom:14px;}
+  .about-body strong{color:var(--text);}
+
+  /* Contact / terminal */
+  .terminal{
+    max-width:640px; margin-top:24px;
+    background:var(--gutter); border:1px solid var(--line); border-radius:8px;
+    overflow:hidden;
+  }
+  .terminal .bar{
+    background:var(--panel); padding:10px 14px;
+    font-family:var(--mono); font-size:0.78rem; color:var(--muted);
+    border-bottom:1px solid var(--line);
+  }
+  .terminal .body{padding:20px 22px; font-family:var(--mono); font-size:0.9rem;}
+  .terminal .line{margin-bottom:10px; color:var(--text);}
+  .terminal .prompt{color:var(--accent-2);}
+  .terminal .out{color:var(--muted); margin-left:18px;}
+  .cursor{
+    display:inline-block; width:8px; height:16px; background:var(--accent);
+    animation:blink 1s step-end infinite; vertical-align:middle; margin-left:4px;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  footer{
+    padding:24px 32px; text-align:center;
+    font-family:var(--mono); font-size:0.78rem; color:var(--muted);
+  }
+
+  @media (max-width:720px){
+    .gutter{display:none;}
+    section{padding:44px 22px;}
+    .proj{grid-template-columns:1fr; gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="tabbar" aria-label="Navegación de secciones">
+  <div class="dots"><span></span><span></span><span></span></div>
+  <button class="tab active" onclick="goTo('inicio')">inicio.tsx</button>
+  <button class="tab" onclick="goTo('proyectos')">proyectos.tsx</button>
+  <button class="tab" onclick="goTo('habilidades')">habilidades.json</button>
+  <button class="tab" onclick="goTo('sobre-mi')">sobre-mi.md</button>
+  <button class="tab" onclick="goTo('contacto')">contacto.sh</button>
+</nav>
+
+<div class="editor">
+  <div class="gutter" aria-hidden="true" id="gutter"></div>
+  <div class="content">
+
+    <section id="inicio" class="hero">
+      <div class="section-label">bienvenida</div>
+      <h1>Hola, soy <span class="kw">Sofía Marín</span><br><span class="str">"Desarrolladora Full-Stack"</span></h1>
+      <p class="tagline">Construyo productos web rápidos y mantenibles, de la base de datos a la interfaz. Me enfoco en React, Node.js y arquitecturas en la nube.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#proyectos" onclick="goTo('proyectos')">Ver proyectos</a>
+        <a class="btn" href="mailto:sofia.marin@email.com">Contactar</a>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="section-label">proyectos destacados</div>
+      <h2>Proyectos</h2>
+      <div class="proj-list">
+
+        <div class="proj">
+          <div class="proj-meta">
+            <div class="name">01 · Rutalytics</div>
+            <div class="stack">
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span>
+            </div>
+          </div>
+          <div class="proj-desc">
+            <p>Plataforma de analítica de rutas logísticas en tiempo real. Procesa más de 50k eventos diarios y reduce en 18% los tiempos muertos de entrega.</p>
+            <div class="links">
+              <a href="#">Ver demo →</a><a href="#">Código fuente →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-meta">
+            <div class="name">02 · Cesta</div>
+            <div class="stack">
+              <span class="tag">Next.js</span><span class="tag">Stripe</span><span class="tag">Supabase</span>
+            </div>
+          </div>
+          <div class="proj-desc">
+            <p>Tienda en línea headless para pequeños productores, con pagos integrados y panel de inventario propio. Más de 200 comercios activos.</p>
+            <div class="links">
+              <a href="#">Ver demo →</a><a href="#">Código fuente →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-meta">
+            <div class="name">03 · Notasync</div>
+            <div class="stack">
+              <span class="tag">TypeScript</span><span class="tag">WebSockets</span><span class="tag">Redis</span>
+            </div>
+          </div>
+          <div class="proj-desc">
+            <p>Editor colaborativo de notas con sincronización en tiempo real y resolución de conflictos tipo CRDT. Proyecto personal open source.</p>
+            <div class="links">
+              <a href="#">Ver demo →</a><a href="#">Código fuente →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="section-label">stack técnico</div>
+      <h2>Habilidades</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="cat">Frontend</div>
+          <ul><li>React / Next.js</li><li>TypeScript</li><li>Tailwind CSS</li></ul>
+        </div>
+        <div class="skill-card">
+          <div class="cat">Backend</div>
+          <ul><li>Node.js / Express</li><li>PostgreSQL</li><li>Redis</li></ul>
+        </div>
+        <div class="skill-card">
+          <div class="cat">Infraestructura</div>
+          <ul><li>Docker</li><li>AWS</li><li>CI/CD</li></ul>
+        </div>
+        <div class="skill-card">
+          <div class="cat">Herramientas</div>
+          <ul><li>Git</li><li>Figma</li><li>Jest / Testing</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="section-label">perfil</div>
+      <h2>Sobre mí</h2>
+      <div class="about-body">
+        <p><strong>5 años</strong> construyendo productos digitales, desde startups en etapa temprana hasta equipos de producto establecidos.</p>
+        <p>Me interesa el código legible tanto como el que funciona: prefiero sistemas simples que el equipo pueda mantener, antes que soluciones ingeniosas difíciles de explicar.</p>
+        <p>Fuera del teclado, contribuyo a proyectos open source y organizo un meetup local de desarrolladoras.</p>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="section-label">iniciar conversación</div>
+      <h2>Contacto</h2>
+      <div class="terminal">
+        <div class="bar">zsh — contacto</div>
+        <div class="body">
+          <div class="line"><span class="prompt">sofia@portafolio</span> % cat contacto.txt</div>
+          <div class="out">email:    sofia.marin@email.com</div>
+          <div class="out">github:   github.com/sofiamarin</div>
+          <div class="out">linkedin: linkedin.com/in/sofiamarin</div>
+          <div class="line"><span class="prompt">sofia@portafolio</span> % <span class="cursor"></span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer>© 2026 Sofía Marín — construido con HTML y café</footer>
+
+<script>
+  function goTo(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // Line numbers in gutter
+  const gutter = document.getElementById('gutter');
+  const totalLines = 90;
+  let lines = '';
+  for(let i=1;i<=totalLines;i++){ lines += i + '<br>'; }
+  gutter.innerHTML = lines;
+
+  // Active tab highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const tabs = document.querySelectorAll('.tab');
+  const map = {inicio:0, proyectos:1, habilidades:2, 'sobre-mi':3, contacto:4};
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        tabs.forEach(t=>t.classList.remove('active'));
+        const idx = map[entry.target.id];
+        if(idx !== undefined) tabs[idx].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

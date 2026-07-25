@@ -1,0 +1,13 @@
+.contenedor{
+    background: linear-gradient(115deg,rgba(13, 16, 21, 0.85) 0%, rgba(44, 115, 111, 1) 100%), url(./fondo.jpg) center, no-repeat;
+    
+
+   
+    height: 400px;
+
+
+}
+h1{
+    font-size: 14px;
+    color: violet;
+}

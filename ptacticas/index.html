@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos — Grid 2x2</title>
+<style>
+  :root{
+    --bg: #0B1420;
+    --grid-line: #16233A;
+    --panel: #101C2C;
+    --panel-edge: #223449;
+    --text: #DCE6F0;
+    --muted: #7189A3;
+    --accent-2: #4FD1C5;
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+  }
+  *{margin:0; padding:0; box-sizing:border-box;}
+  body{
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--bg);
+    color:var(--text);
+    font-family:-apple-system, sans-serif;
+    padding:50px 28px;
+  }
+  h2{font-family:var(--display); margin-bottom:24px;}
+
+  /* La clave: grid con 2 columnas y 2 filas explícitas */
+  .proj-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;   /* 2 columnas de ancho igual */
+    grid-template-rows: 1fr 1fr;      /* 2 filas de alto igual */
+    gap:20px;
+    max-width:1000px;
+  }
+
+  /* En pantallas angostas, cae a 1 columna */
+  @media (max-width:700px){
+    .proj-grid{grid-template-columns: 1fr;}
+  }
+
+  .panel{
+    position:relative; background:var(--panel); border:1px solid var(--panel-edge);
+    padding:24px; border-radius:2px;
+    display:flex; flex-direction:column;
+  }
+  .panel::before, .panel::after{
+    content:""; position:absolute; width:14px; height:14px;
+    border:2px solid var(--accent-2);
+  }
+  .panel::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+  .panel::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+
+  .proj .id{font-family:var(--mono); font-size:0.72rem; color:var(--muted);}
+  .proj h3{font-family:var(--display); font-size:1.2rem; margin-top:8px;}
+  .proj p{color:var(--muted); margin-top:10px; font-size:0.92rem; flex:1;}
+  .specs{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .spec{
+    font-family:var(--mono); font-size:0.7rem; color:var(--text);
+    background:var(--bg); border:1px solid var(--panel-edge);
+    padding:4px 10px; border-radius:2px;
+  }
+  .proj .links{margin-top:16px;}
+  .proj .links a{
+    font-family:var(--mono); font-size:0.8rem; color:var(--accent-2); text-decoration:none;
+  }
+  .proj .links a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<h2>Proyectos</h2>
+
+<div class="proj-grid">
+
+  <div class="panel proj">
+    <div class="id">SPEC-014 · Sistema de colas</div>
+    <h3>Fluxion</h3>
+    <p>Cola de mensajes distribuida con garantía de entrega exactly-once, usada en producción para procesar pagos.</p>
+    <div class="specs">
+      <span class="spec">Go</span><span class="spec">Kafka</span><span class="spec">gRPC</span>
+    </div>
+    <div class="links"><a href="#">Ver repositorio →</a></div>
+  </div>
+
+  <div class="panel proj">
+    <div class="id">SPEC-021 · Plataforma interna</div>
+    <h3>Torreón</h3>
+    <p>Panel de observabilidad para 40+ microservicios: métricas, trazas y alertas en un solo lugar.</p>
+    <div class="specs">
+      <span class="spec">TypeScript</span><span class="spec">Prometheus</span>
+    </div>
+    <div class="links"><a href="#">Ver demo →</a></div>
+  </div>
+
+  <div class="panel proj">
+    <div class="id">SPEC-027 · Herramienta CLI</div>
+    <h3>seedctl</h3>
+    <p>CLI de código abierto para poblar bases de datos de prueba a partir de esquemas reales, sin exponer datos sensibles. +1,200 estrellas en GitHub.</p>
+    <div class="specs">
+      <span class="spec">Rust</span><span class="spec">PostgreSQL</span><span class="spec">SQLite</span>
+    </div>
+    <div class="links"><a href="#">Ver repositorio →</a></div>
+  </div>
+
+  <div class="panel proj">
+    <div class="id">SPEC-033 · Panel web</div>
+    <h3>Vitrina</h3>
+    <p>Dashboard de métricas de negocio en tiempo real para equipos de producto, con alertas configurables.</p>
+    <div class="specs">
+      <span class="spec">React</span><span class="spec">D3.js</span>
+    </div>
+    <div class="links"><a href="#">Ver demo →</a></div>
+  </div>
+
+</div>
+
+</body>
+</html>
