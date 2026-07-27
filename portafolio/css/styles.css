@@ -11,7 +11,7 @@
     /* COLORS */
     --color-fondo-header: #0f1b24;
     --color-fondo-main-secction: #142530;
-    --color-fondo-footer: #09172c;
+    --color-fondo-footer: #101C2C;
     --color-texto: #ffff;
     --color-texto1: #ff9269;
     --color-texto-green: #74cbc3;
@@ -717,7 +717,7 @@ footer {
 }
 
 .main-footer {
-    background: var(--color-fondo-header);
+    background: var(--color-fondo-footer);
     /* border: solid; */
     height: 15vh;
 

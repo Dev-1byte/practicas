@@ -41,7 +41,7 @@ const formulario = document.getElementById('formulario');
     boton.disabled = true;
     
     // ⚠️ COPIA Y PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT
-    const urlGoogleScript = 'https://script.google.com/macros/s/AKfycbwsJoK5lAHQPm2PqrvbGkX5ZGwh52uDr6j-KlsbgwvEr0rEdALlmZYBwYmSi3x3v-kj/exec';
+    const urlGoogleScript = 'https://script.google.com/macros/s/AKfycbwDuZHUtwWmfNaEe7dT0nc3jUUkhJXFiUHSBosoeOuds7EP7IgW-tn0xwUJe8nqSJQ/exec';
     
     // Captura los datos del formulario basándose en los atributos 'name'
     const datosFormulario = new FormData(formulario);
