@@ -4,13 +4,13 @@
     /* font family */
     --font-primary: 'Righteous', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
-    --font-display: 'Space Grotesk', 'Open Sans', sans-serif;
+    --font-display: 'Inter', 'Open Sans', sans-serif;
 
 
 
     /* COLORS */
-    --color-fondo-header: #0d1015;
-    --color-fondo-main-secction: #171A23;
+    --color-fondo-header: #0f1b24;
+    --color-fondo-main-secction: #142530;
     --color-fondo-footer: #09172c;
     --color-texto: #ffff;
     --color-texto1: #ff9269;
@@ -114,7 +114,7 @@ h6 {
 
 .navbar {
 
-    background-color: var(--color-fondo-header);
+    background-color:var(--color-fondo-header);
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.6);
     /* border:  solid red; */
     padding: 14px 20px;
@@ -210,7 +210,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-fondo-header);
+    background: var(--color-fondo-main-secction);
 
 
 
@@ -313,7 +313,7 @@ nav a:hover {
 /* ceccion skills */
 
 .skills {
-   background: #0d1015;
+   background: var(--color-fondo-main-secction);
     color: var(--color-texto);
     padding-bottom: 50px;
     scroll-margin-top: 70px;
@@ -339,9 +339,7 @@ nav a:hover {
 .skills .fila1-wrap {
     /* border: solid rgb(27, 124, 111); */
     flex: 1 1 calc(25% - 10px);
-    /* 4 columnas (25% cada una) */
-
-    background: transparent;
+    background:var(--color-fondo-header);
     box-shadow: 0 0 6px rgba(198, 230, 228, 0.1);
 
     padding: 10px 0;
@@ -356,10 +354,10 @@ nav a:hover {
 .skills .fila1-wrap:hover {
     transform: translateY(-8px) scale(1.03);
 
-    background: rgba(116, 203, 195, .05);
+    /* background: rgba(116, 203, 195, .05); */
 
-    box-shadow:
-        0 10px 30px rgba(116, 203, 195, .18);
+    /* box-shadow:
+        0 10px 30px rgba(116, 203, 195, .18); */
 
     /* border:  rgba(116,203,195,.35); */
 }
@@ -384,7 +382,7 @@ nav a:hover {
     padding: 10px 15px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
-    background: #1e2326;
+    background: #0f1416;
 }
 
 
@@ -392,7 +390,7 @@ nav a:hover {
 
 /* SECCION CURRICULUM */
 .curriculum {
-    background-color: var(--color-fondo-header);
+    background-color: var(--color-fondo-main-secction);
     scroll-margin-top: 70px;
     padding-bottom: 50px;
 
@@ -414,7 +412,7 @@ nav a:hover {
 .caja-cv {
     /* border: solid violet; */
     flex: 1 1 calc(33.33% - 10px);
-    background: transparent;
+    background: var(--color-fondo-header);
     box-shadow: 0 0 6px rgba(226, 238, 237, 0.1);
     display: flex;
     flex-direction: column;
@@ -432,7 +430,7 @@ nav a:hover {
     align-self: flex-start;
     padding: 6px;
     border-radius: 10px;
-    background-color: orange;
+    background-color:var(--color-texto1);
 
 
 }
@@ -463,7 +461,7 @@ nav a:hover {
 
 
 .portfolio {
-    background-color: var(--color-fondo-header);
+    background-color: var(--color-fondo-main-secction);
     /* padding: 50px 0; */
     /* height: 100vh; */
     /* padding-bottom: 100px; */
@@ -480,9 +478,7 @@ nav a:hover {
 .portafolio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 2 columnas de ancho igual */
     grid-template-rows: 1fr 1fr;
-    /* 2 filas de alto igual */
     gap: 20px;
 
     padding: 20px 0;
@@ -499,7 +495,7 @@ nav a:hover {
 .portafolio-panel {
 
     position: relative;
-    background: #10141a;
+    background:var(--color-fondo-header);
     border: 1px solid var(--panel-edge);
     padding: 24px;
     border-radius: 2px;
@@ -560,8 +556,8 @@ nav a:hover {
 .portafolio-panel .spec {
     font-family: var(--mono);
     font-size: 0.7rem;
-    color: var(--text);
-    background: var(--bg);
+    color: var(--color-texto);
+    background: var(--color-texto1);
     border: 1px solid var(--panel-edge);
     padding: 4px 10px;
     border-radius: 2px;
@@ -590,7 +586,7 @@ nav a:hover {
 
 
 .contacto {
-    background: var(--color-fondo-header);
+    background: var(--color-fondo-main-secction);
     align-items: center;
     gap: 2rem;
     /* border-radius: 1rem; */
@@ -606,7 +602,7 @@ nav a:hover {
     /* border: solid blue; */
     display: flex;
     gap: 1rem;
-    background-color: #10141a;
+    background-color: var(--color-fondo-header);
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
@@ -721,7 +717,8 @@ footer {
 }
 
 .main-footer {
-    background: #161922;
+    background: var(--color-fondo-header);
+    /* border: solid; */
     height: 15vh;
 
 
@@ -749,8 +746,7 @@ footer {
 
 .main-footer-text {
     text-align: center;
-
-
+    color: var(--color-texto);
     align-items: center;
 
 }
@@ -771,20 +767,13 @@ footer {
         display: block;
         position: absolute;
         text-align: center;
-        /* Cambios clave para ancho completo */
         left: 0;
-        /* Alinea al borde izquierdo */
-        right: 0;
-        /* Opcional, asegura el estiramiento */
-        width: 100%;
-        /* Ocupa todo el ancho de la pantalla */
-        box-sizing: border-box;
-        /* Evita que paddings o bordes rompan el 100% */
 
-        /* Tus estilos actuales */
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
         top: 70px;
-        background-color: var(--color-fondo-main-secction);
-        /* border: solid violet; */
+        background-color: var(--color-fondo-header);
     }
 
     nav.responsive ul {
@@ -807,11 +796,6 @@ footer {
         text-align: center;
     }
 
-    .inicio {
-        height: 100vh;
-
-
-    }
 
     .display-1 .text {
         width: 100%;
@@ -825,40 +809,29 @@ footer {
 
     }
 
-    .skills .fila1-wrap {
-        flex: 1 1 calc(50% - 10px);
-    }
-
+  
     .inicio .display-1 img {
         width: 50%;
     }
 
+    /* skills */
 
-    .curriculum .fila {
-        display: block;
+  .skills .fila1-wrap {
+        flex: 1 1 calc(50% - 10px);
     }
 
-    .curriculum .fila .col {
-        width: 90%;
-    }
+/* contacto */
 
-    .curriculum .fila .derecha {
-        margin-left: 20px;
-    }
-
+  
 
     .contacto .contacto-caja {
         flex-direction: column;
-        gap: 20px;
-
-
-
-
-        /* border: solid; */
+  
     }
 
     .text-contact {
         width: 100%;
+        /* border-radius: solid; */
 
 
     }
@@ -867,15 +840,13 @@ footer {
         border-right: none;
         display: none;
     }
+ .contacto .text-contact h2{
+    padding-top: 0;
+   
+ }
 
-    .text-contact h2 {
-        padding: 10px 0;
-    }
-
-    .fondo .text-contact p {
+    .contacto .text-contact p {
         padding: 0;
-
-        /* border: solid green; */
     }
 
     .contacto .col {
