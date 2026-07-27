@@ -53,7 +53,7 @@ const formulario = document.getElementById('formulario');
       mode: 'no-cors' // Permite el envío sin problemas de seguridad entre dominios
     })
     .then(() => {
-      alert('¡Mensaje guardado en Google Sheets con éxito!');
+      alert('¡Mensaje enviado con éxito!');
       formulario.reset(); // Limpia los campos
     })
     .catch(error => {

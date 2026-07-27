@@ -665,7 +665,6 @@ nav a:hover {
 .contacto .col {
     /* border:  solid red; */
     /* width: 100%; */
-
     width: 50%;
     margin: 0 auto;
     padding: 10px;
@@ -683,6 +682,7 @@ nav a:hover {
     resize: none;
     margin-bottom: 10px;
     background-color: #2e3338;
+    color: var(--color-texto);
     font-size: 15px;
 }
 
